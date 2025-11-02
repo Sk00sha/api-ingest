@@ -1,11 +1,5 @@
 from dataclasses import dataclass, field
-from typing import Optional, List
-
-
-@dataclass
-class MetadataConfig:
-    kind: Optional[str] = None
-    url: [str] = None
+from typing import Optional, List, Dict
 
 
 @dataclass
@@ -16,17 +10,29 @@ class AuthConfig:
 
 @dataclass
 class HistoryLoadConfig:
-    enabled: str
+    enabled: bool
     start_date: Optional[str] = None
     end_date: Optional[str] = None
 
 
 @dataclass
+class Endpoint:
+    endpoint_name: str
+    params: Optional[Dict] = field(default_factory=dict)
+    headers: Optional[Dict[str, str]] = field(default_factory=dict)
+    auth: Optional[AuthConfig] = None
+
+
+@dataclass
 class AppContext:
+    app_name: str
     url: str
-    metadata: MetadataConfig
-    auth: AuthConfig
     history_load: HistoryLoadConfig
-    params: Optional[dict] = None
-    headers: Optional[dict[str, str]] = None
-    endpoints: List[str] = field(default_factory=list)
+    endpoints: List[Endpoint] = field(default_factory=list)
+
+
+@dataclass
+class NotificationContext:
+    base_url: str
+    username: str
+    password: str

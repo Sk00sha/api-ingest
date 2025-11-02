@@ -1,25 +1,43 @@
 {
-  "app-name": "api-ingestion",
-  "base-url": "https://rickandmortyapi.com/api/",
-  "endpoints": ["character","location"],
-   "metadata": {
-     "kind": "",
-     "url": ""
-   },
-  "headers": {
-    "header1":""
-  },
-  "auth": {
-    "name": "",
-    "password": ""
-  },
-  "history-load": {
-    "enabled": "False",
-    "start-date": "",
-    "end-date": ""
-  },
-  "params": {
+  "ingest-souce-config": {
+    "app-name": "RickAndMortyIngest",
+    "base-url": "https://rickandmortyapi.com/api/",
+    "history-load": {
+      "enabled": true,
+      "start_date": "2020-01-01",
+      "end_date": "2020-12-31"
+    },
+    "endpoints": [
+      {
+        "endpoint-name": "character",
+        "params": {
 
+        },
+        "headers": {
+          "Accept": "application/json"
+        },
+        "auth": {
+          "username": "",
+          "password": ""
+        }
+      },
+      {
+        "endpoint-name": "location",
+        "params": {},
+        "headers": {},
+        "auth": {
+          "username": "",
+          "password": ""
+        }
+      }
+    ]
   },
-  "output_path": "./output/"
+
+  "notifications": {
+    "service-now": {
+      "base-url": "https://your-instance.service-now.com",
+      "username": "api_user",
+      "password": "supersecret"
+    }
+  }
 }
