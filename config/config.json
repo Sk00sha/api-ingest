@@ -1,0 +1,16 @@
+{
+  "base-url": "test-url",
+  "endpoints": ["endpoint1","endpoint2"],
+   "metadata": {
+     "kind": "url",
+     "url": "metadata-url"
+   },
+  "headers": {
+    "header1":"header1data"
+  },
+  "auth": {
+    "name": "name",
+    "password": "pass"
+  },
+  "output_path": "output-volume"
+}
