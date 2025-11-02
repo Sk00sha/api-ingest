@@ -1,11 +1,10 @@
-from api_ingest.config_loader import ConfigLoader
-from api_ingest.api_ingestor import ApiIngestor
+
+from api_ingest.job_runner import Runner
 
 
 def main():
-    config = ConfigLoader()
-    ingestor = ApiIngestor(config.get_app_context())
-    ingestor.run("./output/")
+    runner = Runner("config/config.json")
+    runner.run()
 
 
 if __name__ == "__main__":
