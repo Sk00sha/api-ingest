@@ -1,0 +1,35 @@
+{
+  "url": {
+    "endpoints": [{
+      "endpoint-name": "character",
+      "params": {
+        "param1": ""
+      },
+      "headers": {
+      "header1":""
+      },
+    "auth": {
+      "name": "",
+      "password": ""
+    }
+    },
+      {
+      "endpoint-name": "location",
+      "params": {
+        "param1": ""
+      },
+      "headers": {
+      "header1":""
+      },
+    "auth": {
+      "name": "",
+      "password": ""
+    }
+    }],
+    "history-load": {
+    "enabled": "False",
+    "start-date": "",
+    "end-date": ""
+  }
+  }
+}

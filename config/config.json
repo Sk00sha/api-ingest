@@ -1,7 +1,7 @@
 {
   "app-name": "api-ingestion",
   "base-url": "https://rickandmortyapi.com/api/",
-  "endpoints": ["character"],
+  "endpoints": ["character","location"],
    "metadata": {
      "kind": "",
      "url": ""
@@ -14,7 +14,7 @@
     "password": ""
   },
   "history-load": {
-    "enabled": "",
+    "enabled": "False",
     "start-date": "",
     "end-date": ""
   },

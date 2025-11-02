@@ -16,7 +16,7 @@ class AuthConfig:
 
 @dataclass
 class HistoryLoadConfig:
-    enabled: bool
+    enabled: str
     start_date: Optional[str] = None
     end_date: Optional[str] = None
 
