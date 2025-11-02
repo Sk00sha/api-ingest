@@ -8,8 +8,8 @@ class ApiIngestor:
         self.api_client = MyApiClient(ctx)
         self.loader = Loader()
 
-    def run(self):
+    def run(self, base_out_vol:str):
         for endpoint in self.api_client.endpoint:
             data = self.api_client.fetch_data(f"{self.api_client.base_url}{endpoint}")
-            self.loader.save_json(data, f"./output/{endpoint}.json")
+            self.loader.save_json(data, f"{base_out_vol}{endpoint}.json")
             print(f"✅ Ingested {len(data)} records to ./output/fetched_data.json")
