@@ -5,6 +5,8 @@ from requests import HTTPError
 from .base_client import BaseApiClient
 
 logger = logging.getLogger(__name__)
+
+
 class MyApiClient(BaseApiClient):
     def fetch_data(self, url: str):
         data = []
@@ -15,7 +17,9 @@ class MyApiClient(BaseApiClient):
                 response = self.get(url, params={**self.params, "page": page})
                 logger.info(f"response code: {response.status_code} for url: {url}")
             except HTTPError as e:
+                logger.warning(f"HTTPError {e.response.status_code} for {url} on page {page}")
                 if e.response.status_code == 404:
+
                     break
                 raise
             except Exception as e:
@@ -28,6 +32,5 @@ class MyApiClient(BaseApiClient):
 
             data.extend(items)
             page += 1
-
+        logger.info(f"Finished fetch for {url}. Total items: {len(data)}")
         return data
-
