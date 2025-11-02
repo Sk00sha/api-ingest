@@ -15,9 +15,18 @@ class AuthConfig:
 
 
 @dataclass
+class HistoryLoadConfig:
+    enabled: bool
+    start_date: Optional[str] = None
+    end_date: Optional[str] = None
+
+
+@dataclass
 class AppContext:
     url: str
-    headers: dict[str, str] = None
+    metadata: MetadataConfig
+    auth: AuthConfig
+    history_load: HistoryLoadConfig
+    params: Optional[dict] = None
+    headers: Optional[dict[str, str]] = None
     endpoints: List[str] = field(default_factory=list)
-    metadata: Optional[MetadataConfig] = None
-    auth: Optional[AuthConfig] = None

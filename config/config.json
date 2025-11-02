@@ -1,16 +1,25 @@
 {
-  "base-url": "test-url",
-  "endpoints": ["endpoint1","endpoint2"],
+  "app-name": "api-ingestion",
+  "base-url": "https://rickandmortyapi.com/api/",
+  "endpoints": ["character"],
    "metadata": {
-     "kind": "url",
-     "url": "metadata-url"
+     "kind": "",
+     "url": ""
    },
   "headers": {
-    "header1":"header1data"
+    "header1":""
   },
   "auth": {
-    "name": "name",
-    "password": "pass"
+    "name": "",
+    "password": ""
   },
-  "output_path": "output-volume"
+  "history-load": {
+    "enabled": "",
+    "start-date": "",
+    "end-date": ""
+  },
+  "params": {
+
+  },
+  "output_path": "./output/"
 }

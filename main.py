@@ -6,7 +6,8 @@ from api_ingest.loader import Loader
 
 def main():
     config = ConfigLoader()
-    print(config.get_app_context())
+    ingestor = ApiIngestor(config.get_app_context())
+    ingestor.run()
 
 
 if __name__ == "__main__":

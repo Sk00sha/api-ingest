@@ -1,7 +1,13 @@
-class Loader:
-    def __init__(self, spark):
-        self.spark = spark
+import json
+from pathlib import Path
 
-    def write_csv(self, df, output_path):
-        df.coalesce(1).write.mode("overwrite").option("header", "true").csv(output_path)
-        print(f"✅ CSV written to: {output_path}")
+
+class Loader:
+    def __init__(self):
+        pass
+
+    def save_json(self, data, path):
+        path = Path(path)
+        path.parent.mkdir(parents=True, exist_ok=True)
+        with path.open("w", encoding="utf-8") as f:
+            json.dump(data, f, ensure_ascii=False, indent=2)
