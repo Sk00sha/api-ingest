@@ -8,19 +8,12 @@ from pyspark.sql import SparkSession
 
 from api_ingest.app_context import AppContext
 
-
-# -------------------------------------------------------
-# 1️⃣ Partition definition
-# -------------------------------------------------------
+#TODO -> setup partitioning for parallel api calls
 class RestApiPartition(InputPartition):
     def __init__(self, url, pid):
         self.url = url
         self.pid = pid
 
-
-# -------------------------------------------------------
-# 2️⃣ Reader logic (executed in parallel)
-# -------------------------------------------------------
 class RestApiReader(DataSourceReader):
     def __init__(self, schema: StructType, options: dict):
         self.schema = schema
@@ -39,9 +32,6 @@ class RestApiReader(DataSourceReader):
             yield (json.dumps(record),)
 
 
-# -------------------------------------------------------
-# 3️⃣ DataSource definition
-# -------------------------------------------------------
 class RestApiDataSource(DataSource):
 
     @classmethod
@@ -55,12 +45,11 @@ class RestApiDataSource(DataSource):
         return RestApiReader(schema, self.options)
 
 class RestConnector:
-    def __init__(self,ctx: AppContext,spark:Any):
+    def __init__(self,ctx: AppContext):
         self.url = ctx.url
-        self.spark = spark
 
-    def get_data_source_reader(self):
-        self.spark.dataSource.register(RestApiDataSource)
-        return self.spark.read.format("restapi").option("url", self.url).option(
+    def get_data_source_reader(self,spark:Any):
+        spark.dataSource.register(RestApiDataSource)
+        return spark.read.format("restapi").option("url", self.url).option(
                 "schemaname", "skema").load()
 

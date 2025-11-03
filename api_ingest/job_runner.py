@@ -6,22 +6,21 @@ from api_ingest.app_context import AppContext, HistoryLoadConfig, Endpoint, Auth
 from api_ingest.api_client import ApiDataClient
 from api_ingest.snow_client import ServiceNowClient
 from api_ingest.conf import ConfigLoader
-from rest_connector import RestConnector
+from api_ingest.rest_connector import RestConnector
 logging.basicConfig(level=logging.INFO)
 
 
 class Runner:
-    def __init__(self, path,spark:Any):
+    def __init__(self, path:str):
         self.path = path
-        self.spark = spark
 
-    def run(self):
+    def run(self,spark:Any):
         conf = ConfigLoader()
         try:
             ctx = conf.load_app_context(self.path)
             connector = RestConnector(ctx)
-            df = connector.get_data_source_reader()
-            return df
+            df = connector.get_data_source_reader(spark)
+            df.show()
             #api_client = ApiDataClient(ctx)
             #api_client.fetch_data()
         except Exception as e:
