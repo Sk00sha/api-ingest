@@ -1,7 +1,7 @@
 {
   "ingest-souce-config": {
     "app-name": "RickAndMortyIngest",
-    "base-url": "https://rickandmortyapi.com/api/",
+    "base-url": "https://jsonplaceholder.typicode.com/posts",
     "history-load": {
       "enabled": true,
       "start_date": "2020-01-01",
@@ -9,7 +9,7 @@
     },
     "endpoints": [
       {
-        "endpoint-name": "character",
+        "endpoint-name": "",
         "params": {
 
         },
