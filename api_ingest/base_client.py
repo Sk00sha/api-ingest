@@ -14,7 +14,3 @@ class BaseApiClient:
         response.raise_for_status()
         return response.json()
 
-    def post(self, url: str, data=None, json=None, headers=None, auth=None):
-        response = self.session.post(url, data=data, json=json, headers=headers, auth=auth)
-        response.raise_for_status()
-        return response.json()

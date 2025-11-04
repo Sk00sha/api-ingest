@@ -1,0 +1,31 @@
+{
+      "fields": [
+        {"name": "id", "type": "long", "nullable": false},
+        {"name": "name", "type": "string"},
+        {"name": "price", "type": {"type": "decimal", "precision": 10, "scale": 2}},
+        {"name": "created_at", "type": "timestamp"},
+        {
+          "name": "tags",
+          "type": {"type": "array", "elementType": "string", "containsNull": false}
+        },
+        {
+          "name": "properties",
+          "type": {
+            "type": "map",
+            "keyType": "string",
+            "valueType": "string",
+            "valueContainsNull": true
+          }
+        },
+        {
+          "name": "address",
+          "type": {
+            "type": "struct",
+            "fields": [
+              {"name": "city", "type": "string"},
+              {"name": "zip", "type": "string"}
+            ]
+          }
+        }
+      ]
+    }

@@ -1,10 +1,10 @@
 
 from api_ingest.job_runner import Runner
 
-
+from api_ingest.conf import SchemaParser
 def main():
-    runner = Runner("config/config.json")
-    runner.run()
+
+    SchemaParser.load_schema("config/schema.json")
 
 
 if __name__ == "__main__":
